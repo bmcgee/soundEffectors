@@ -1,4 +1,8 @@
-#pragma once
+
+#ifndef my_app_h_
+#define my_app_h_
+
+//#pragma once
 
 #include "ofMain.h"
 #include "ofxSoundPlayerObject.h"
@@ -6,6 +10,11 @@
 #include "waveformDraw.h"
 #include "SineWaveGenerator.h"
 #include "ofxEasyFft.h"
+#include "helperFuncs.h"
+#include "visuals.h"
+
+
+extern int shared_shit;
 
 class ofApp : public ofBaseApp{
 
@@ -39,8 +48,14 @@ class ofApp : public ofBaseApp{
 	
 	bool show_fft = true;
 	
-	//ofxEasyFft fft;
+	//visualizers
+	FftLocVis locvis;
 	
-
-		
+	static ofApp* get_instance(void);
+	
+	int globalScale;
+	
 };
+
+#endif
+

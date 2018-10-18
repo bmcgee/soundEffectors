@@ -1,5 +1,8 @@
 #include "ofApp.h"
 
+static ofApp* app_ptr = NULL;
+int shared_shit = 7;
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 	ofSetLogLevel(OF_LOG_VERBOSE);
@@ -17,13 +20,17 @@ void ofApp::setup(){
 	player.play();
 	
 	player.connectTo(fft).connectTo(output);
+	app_ptr = this;
+	
+	locvis.setup();
 	
 
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+	locvis.update();
+	cout << globalScale;
 }
 
 //--------------------------------------------------------------
@@ -31,7 +38,9 @@ void ofApp::draw(){
 	if (show_fft) {
 		fft.draw(ofRectangle(0, ofGetHeight()/2, ofGetWidth(), ofGetHeight()/2));
 	}
-	fft.getAmpAtFreq();
+	fft.getAmpAtFreq(ofGetMouseX());
+	
+	locvis.draw();
 	
 	
 }
@@ -96,3 +105,9 @@ void ofApp::gotMessage(ofMessage msg){
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
 }
+
+ofApp* ofApp::get_instance(void)
+{
+	return app_ptr;
+}
+
