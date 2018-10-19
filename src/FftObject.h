@@ -23,5 +23,5 @@ public:
 	int numChannels = 0;
 	bool bIsProcessed = false;
 	
-	void getAmpAtFreq(int freq_pos);
+	float getAmpAtFreq(int freq_pos);
 };

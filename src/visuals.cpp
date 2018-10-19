@@ -6,22 +6,27 @@
 //
 
 #include "visuals.h"
-
-
-#include "FftObject.h"
 #include "ofApp.h"
 
-//FftLocVis::FftLocVis() {
-//
+//FftLocVis::FftLocVis(FftObject& fftObj) {
+//	fft = fftObj;
 //}
 
-void FftLocVis::setup() {
+void FftLocVis::setup(FftObject* fftObj){
+	cout << &typeid(fftObj);
 	pos.set(ofGetMouseX(), ofGetMouseY());
-}
+	fft_ptr = fftObj;
+	
+	color.set(0, 255, 0);
+	
+};
 
 void FftLocVis::update() {
-	fft.getAmpAtFreq(pos.x);
-}
+	int freqToGet = int(pos.x);
+	amp = fft_ptr->getAmpAtFreq(freqToGet);
+	radius = sizeMult * amp;
+	
+};
 
 
 void FftLocVis::draw() {
@@ -29,17 +34,12 @@ void FftLocVis::draw() {
 	ofSetColor(color);
 	ofDrawCircle(pos.x, pos.y, radius);
 	ofPopStyle();
+
+	
+	
 	
 	ofApp* app = ofApp::get_instance();
-	
-	cout << app->globalScale << std::endl;
-	
-	cout << shared_shit << endl;
-	
-	//app->fft.
-	//std::cout << &app->fft.audioBins[0] << std::cout;
-//	auto ptrToApp = dynamic_cast<ofApp*>(ofGetAppPtr());
-//	ptrToApp->fft->;
-	//std::cout << ptrToApp->fft->fucker << endl;
-//	fft->fucker = 1234;
-}
+//	cout << app->globalScale << std::endl;
+//	cout << shared_shit << endl;
+
+};

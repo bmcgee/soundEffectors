@@ -111,9 +111,10 @@ void FftObject::process(ofSoundBuffer &input, ofSoundBuffer &output) {
     bIsProcessed = true;
 }
 
-void FftObject::getAmpAtFreq(int freq_pos) {
+float FftObject::getAmpAtFreq(int freq_pos) {
 	int freq = ofMap(freq_pos, 0, ofGetWidth(), 0, 22050);
 	float amp = fft->getAmplitudeAtFrequency(freq, 44100);
+	return amp;
 //	ofDrawBitmapString(to_string(ofGetMouseX()), ofGetMouseX(), ofGetMouseY()-25);
 //	ofDrawBitmapString(to_string(freq), ofGetMouseX(), ofGetMouseY()-15);
 //	ofDrawBitmapString(to_string( ofMap(amp, 0, .01, 100, 200)), ofGetMouseX(), ofGetMouseY());

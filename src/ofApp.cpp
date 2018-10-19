@@ -22,7 +22,7 @@ void ofApp::setup(){
 	player.connectTo(fft).connectTo(output);
 	app_ptr = this;
 	
-	locvis.setup();
+	locvis.setup(&fft);
 	
 
 }
@@ -30,7 +30,6 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
 	locvis.update();
-	cout << globalScale;
 }
 
 //--------------------------------------------------------------
@@ -73,7 +72,7 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-
+	
 }
 
 //--------------------------------------------------------------

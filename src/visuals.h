@@ -10,11 +10,11 @@
 
 #include <stdio.h>
 
-
+#include "FftObject.h"
 #include "ofMain.h"
 //#include "ofApp.h"
 
-
+	
 
 class FftLocVis {
 	
@@ -24,10 +24,13 @@ class FftLocVis {
 	ofColor color;
 	ofVec2f pos;
 	int life;
-	int amplitude;
+	float amp;
+	float sizeMult = 100;
 	float radius;
 	
-	void setup();
+	FftObject* fft_ptr;
+	
+	void setup(FftObject* fftObj);
 	void update();
 	void draw();
 	

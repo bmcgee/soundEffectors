@@ -51,6 +51,7 @@ class ofApp : public ofBaseApp{
 	//visualizers
 	FftLocVis locvis;
 	
+	
 	static ofApp* get_instance(void);
 	
 	int globalScale;
